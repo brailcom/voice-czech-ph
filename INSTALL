@@ -1,0 +1,42 @@
+Installation instructions for voice-czech-ph
+============================================
+
+* Prerequisities
+
+In order to install and use this voice, you need the following software:
+
+- Festival 1.4.3 or higher.
+
+- Festvox 2.0, available from http://www.festvox.org/download.html .
+
+- Edinburgh Speech Tools (Debian package speech-tools).
+
+- Sufficiently recent version of festival-czech, available from
+  http://www.freebsoft.org/festival-czech .
+
+* Building the necessary files
+
+Just invoke `make'.
+
+If it fails, this most likely because you don't have installed all the tools
+mentioned above or you don't have properly set and exported the environment
+variables ESTDIR and FESTVOXDIR (they should point to the Edinburgh Speech
+Tools and Festvox installation directories respectively).
+
+* Installing the voice
+
+Run `make install'.  You may want to look at the beginning of Makefile to
+adjust the installation path before running the command.
+
+* Running the voice
+
+Start Festival and call:
+
+  (voice_czech_ph)
+
+Now Festival should speak Czech!
+
+
+Local Variables:
+mode: outline
+End:

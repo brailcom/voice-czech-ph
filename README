@@ -1,0 +1,22 @@
+Czech Festival Voice
+====================
+
+This package contains a complete Czech diphone voice for Festival, including
+all files and tools necessary for its further development.
+
+You can find installation instructions in the file INSTALL.
+
+The way the package was created is thoroughly documented in the subdirectory
+`doc' (in Czech only for now).  Anybody who wants to create another Czech
+diphone voice for Festival can follow that documentation.
+
+The home page of the project is
+http://www.freebsoft.org/festival-czech-diphone-database .
+
+Czech Festival synthesis has been developed by Brailcom, o.p.s.  Nadační fond
+Českého rozhlasu has provided a financial contribution to the project.
+Institute of Phonetics at Faculty of Philosophy & Arts, Charles University,
+Prague, led by prof. PhDr. Zdena Palková, CSc. has provided expert knowledge
+and consultations.
+
+-- Milan Zamazal <pdm@freebsoft.org>

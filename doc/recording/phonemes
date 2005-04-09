@@ -1,0 +1,42 @@
+#    pauza (ticho)
+_    ráz (začátek samohlásky nespojené s předchozí hláskou, např. "_ano")
+a
+a:   á
+b
+c
+ch   neznělé ch
+ch*  znělé ch, před znělou souhláskou a před hláskou ř
+c~   č
+d
+dz
+dz~  dž
+d~   ď
+e
+e:   é
+f
+g
+h
+i
+i:   í
+j
+k
+l
+m
+n    "normální" n
+n*   nosové n
+n~   ň
+o
+o:   ó
+p
+r
+r~   znělé ř, nesousedící s neznělou souhláskou
+r~*  neznělé ř, v sousedství neznělé souhlásky
+s
+s~   š
+t
+t~   ť
+u
+u:   ú
+v
+z
+z~   ž
