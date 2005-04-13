@@ -58,7 +58,7 @@ samohlásky, viz soubor etc/phaliases.
 
 Byl vygenerován difon #-# do souboru recording/ph0000.wav:
 
-  $ dd if=/dev/zero of=ph0000.wav bs=2000 count=1
+  $ dd if=/dev/zero of=ph0000.raw bs=2000 count=1
   $ sox -s -b -r 1000 ph0000.raw -s -w -r 44100 ph0000.wav
 
 * Vytvoření diphonového indexu.
