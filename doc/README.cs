@@ -133,6 +133,13 @@ S ohledem na kvalitu výsledného hlasu lze měnit následující parametry:
 Při testování hlasu může být vhodné nastavit hodnotu proměnné czech-randomize
 na nil.
 
+** Úprava intenzity vzorků
+
+Soubor etc/powfacts je automaticky generovaný.  Pokud je potřeba ručně upravit
+intenzitu konkrétního vzorku, neděje se tak v tomto souboru, nýbrž v souboru
+etc/pf/FILE, kde FILE je základní jméno odpovídajícího *.wav souboru bez
+přípony.  Obsahem souboru FILE je číselná hodnota.
+
 * Odkazy
 
 voice-czech-ph: http://cvs.freebsoft.org/repository/voice-czech-ph

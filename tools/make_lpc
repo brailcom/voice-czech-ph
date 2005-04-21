@@ -62,7 +62,12 @@ do
    echo $i LPC
 
    # Potentially normalise the power (if powfact is there)
-   if [ -f etc/powfacts ]
+   # Change by Milan Zamazal <pdm@freebsoft.org>: If the corresponding etc/pf/*
+   # file exists, use it instead of etc/powfacts:
+   if [ -f etc/pf/$fname ]; then
+       powfact=`cat etc/pf/$fname`
+       $ESTDIR/bin/ch_wave -scale $powfact $i -o /tmp/tmp$$.wav
+   elif [ -f etc/powfacts ]
    then
        powfact=`awk '{if ($1 == "'$fname'") print $2}' etc/powfacts`
        if [ ! "$powfact" ]
