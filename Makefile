@@ -8,13 +8,14 @@ destdir = $(festival_voices_path)/czech/czech_ph
 
 .PHONY: default install lpc-files
 
-.INTERMEDIATE: etc/pf/*
-
 default: lpc-files festvox/czech_ph.scm
 
 lpc-files: $(patsubst wav/%.wav, lpc/%.lpc, $(wildcard wav/*.wav))
 lpc/%.lpc: wav/%.wav pm/%.pm etc/powfacts etc/pf/%
 	./tools/make_lpc $<
+
+etc/pf/%: etc/powfacts
+	fgrep `basename $@` etc/powfacts | head -1 | awk '{ print $$2 }' > $@
 
 pm-files: $(patsubst wav/%.wav, pm/%.pm, $(wildcard wav/*.wav))
 pm/%.pm: wav/%.wav
