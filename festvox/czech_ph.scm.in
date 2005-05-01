@@ -1,8 +1,9 @@
+(defvar czech-ph-unisyn-index "DESTDIR/dic/phdiph.est")
+
 (set! czech-insert-filling-vowels nil)
 
 (czech-proclaim-voice (ph (gender male)) ""
-  (czech-unisyn-init 'czech_ph
-                     "DESTDIR/dic/phdiph.est")
+  (czech-unisyn-init 'czech_ph czech-ph-unisyn-index)
   (set! czech-int-simple-params* '((f0_mean 136) (f0_std 8))))
 
 (provide 'czech_ph)

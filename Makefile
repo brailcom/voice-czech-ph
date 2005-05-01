@@ -11,6 +11,8 @@ destdir = $(festival_voices_path)/czech/czech_ph
 default: lpc-files festvox/czech_ph.scm
 
 lpc-files: $(patsubst wav/%.wav, lpc/%.lpc, $(wildcard wav/*.wav))
+lpc/ph0000.lpc: wav/ph0000.wav pm/ph0000.pm
+        ./tools/make_lpc $<
 lpc/%.lpc: wav/%.wav pm/%.pm etc/powfacts etc/pf/%
 	./tools/make_lpc $<
 
