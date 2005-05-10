@@ -19,10 +19,10 @@ lpc/%.lpc: wav/%.wav pm/%.pm etc/powfacts etc/pf/%
 etc/pf/%: etc/powfacts
 	fgrep `basename $@` etc/powfacts | head -1 | awk '{ print $$2 }' > $@
 
-pm-files: $(patsubst wav/%.wav, pm/%.pm, $(wildcard wav/*.wav))
-pm/%.pm: wav/%.wav
-	./tools/make_pm_wave $<
-	./tools/make_pm_fix $@
+# pm-files: $(patsubst wav/%.wav, pm/%.pm, $(wildcard wav/*.wav))
+# pm/%.pm: wav/%.wav
+# 	./tools/make_pm_wave $<
+# 	./tools/make_pm_fix $@
 
 etc/powfacts: $(wildcard lab/*.lab)
 	./tools/find_powerfactors lab/*.lab
