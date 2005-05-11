@@ -60,10 +60,6 @@ fi
 unset LC_ALL
 LC_NUMERIC=C
 
-# Modification by Milan Zamazal <pdm@freebsoft.org>: Ensure locales don't break number printing.
-unset LC_ALL
-LC_NUMERIC=C
-
 for i in $*
 do
    fname=`basename $i .wav`

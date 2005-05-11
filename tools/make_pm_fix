@@ -54,10 +54,6 @@ fi
 unset LC_ALL
 LC_NUMERIC=C
 
-# Modification by Milan Zamazal <pdm@freebsoft.org>: Ensure locales don't break number printing.
-unset LC_ALL
-LC_NUMERIC=C
-
 FIX_PM=$FESTVOXDIR/src/general/fix_pm
 
 for i in $*
