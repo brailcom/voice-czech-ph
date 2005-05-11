@@ -55,7 +55,7 @@ fi
 
 # Modification by Milan Zamazal <pdm@freebsoft.org>: Ensure locales don't break awk operation.
 unset LC_ALL
-LC_NUMERIC=C
+export LC_NUMERIC=C
 
 for i in $*
 do
