@@ -16,6 +16,9 @@ lpc/ph0000.lpc: wav/ph0000.wav pm/ph0000.pm
 lpc/%.lpc: wav/%.wav pm/%.pm etc/powfacts etc/pf/%
 	./tools/make_lpc $<
 
+$(wildcard etc/pf/*):
+	true
+
 etc/pf/%: etc/powfacts
 	fgrep `basename $@` etc/powfacts | head -1 | awk '{ print $$2 }' > $@
 
