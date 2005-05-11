@@ -53,6 +53,10 @@ then
    exit 1
 fi
 
+# Modification by Milan Zamazal <pdm@freebsoft.org>: Ensure locales don't break awk operation.
+unset LC_ALL
+LC_NUMERIC=C
+
 for i in $*
 do
    fname=`basename $i .lab`
