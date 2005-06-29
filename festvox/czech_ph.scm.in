@@ -1,3 +1,5 @@
+(require 'czech-unisyn)
+
 (defvar czech-ph-unisyn-index "DESTDIR/dic/phdiph.est")
 
 (set! czech-insert-filling-vowels nil)
