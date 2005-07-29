@@ -1,0 +1,159 @@
+The way Czech diphone database was created
+==========================================
+
+The database was prepared in the way described in the Festvox documentation
+available at http://www.festvox.org/download.html .  Familiarity with that
+documentation is assumed, this README contains only additional information and
+some particular experiences.
+
+The following sections describe the steps of the work, approximately in the
+order they were performed.
+
+* Preparation of the word list to record
+
+Everything concerning this step is in the doc/recording/ subdirectory.
+
+* The recording
+
+The recording was performed in a recording studio.  Phonetic researchers were
+present to supervise proper pronunctiation (wrt. requirements of the diphone
+database) by the speaker.  Directions to the speaker are available in the file
+doc/recording/README.speaker.cs .
+
+* Initial processing of the recording
+
+The resulting recording was received from the recording studio in the form of
+two WAV files as a 44100 Hz stereo.  So the first step was conversion to mono
+and concatenation of the two parts.  This can be done easily using the sox
+program:
+
+  $ sox part1.wav -c part1-mono.wav
+  $ sox part2.wav -c part2-mono.wav
+  $ params='-t raw -r 44100 -w -s'
+  $ { sox part1-mono.wav $params - ; sox part2-mono.wav $params - } |
+    sox $params - recording.wav
+
+The file recording.wav was then split to WAV files containing single words
+using the Splitter function of the Fvoxedit program.  Because the word order in
+the recording was somewhat different from the order in the recording/words
+file, it was necessary to assign the files to their corresponding diphones by
+hand.  That was done with the help of the small Emacs program tools/assign.el.
+At the same time errors in the automatic word splitting were corrected,
+unusable parts of the recording were deleted and extra sounds (e.g. cough) were
+removed.  The words which were pronounced incorrectly but might be used to
+extract different diphones were retained.
+
+The resulting .wav files are placed in the wav/ directory.
+
+* Checking the diphones
+
+It was checked that the recording contains (after deleting unusable parts)
+contains all the diphones from the list doc/recording/diphones and that it
+doesn't contain any other diphones (due to errors during the correction work).
+
+It was found that because of errors in the doc/recording/words file the
+diphones n-f, n-g and n-k are not present in the recording.  They were later
+added to the file dic/phdiph.est as aliases, together with aliases of the
+diphones composed of long vowels, see the etc/phaliases file.
+
+The diphone #-# was created, in the file recording/ph0000.wav:
+
+  $ dd if=/dev/zero of=ph0000.raw bs=2000 count=1
+  $ sox -s -b -r 1000 ph0000.raw -s -w -r 44100 ph0000.wav
+
+* Making the diphone index
+
+As described in the Festvox documentation, the directories prompt-wav/,
+prompt-lab/, prompt-ceb/, lab/ and cep/ were created and filled with
+appropriate data using the festvox tools.  Then the file dic/phdiph.est was
+created.  All the mentioned directories except for lab/ are no longer needed
+afterwards and may be deleted.
+
+Because the automated splitting of the files to single phonemes resulted in
+mostly incorrect labels, hand splitting was done using the Fvoxedit tool.
+
+The etc/phaliases aliases mentioned above were added to the dic/phdiph.est
+file.
+
+* Cutting the recorded files
+
+The recording size was reduced by cutting out the starting and final silence
+parts of the files in the wav/ directory.  That was done using the
+tools/remsilence.scm script that uses information from the files in the lab/
+subdirectory and assumes that the final boundary of the last pause in each of the
+lab files is placed exactly at the and of the sound file.
+
+* Looking for pitchmarks
+
+It was done as described in the Festvox documentation, including the following
+correction using the make_pm_fix script.
+
+* Normalization
+
+Because the intensities of particular words in the recording were very
+different, it was necessary to perform normalization of the sound files.  The
+Festvox script find_powerfacts was applied to generate the necessary
+information.  If you don't intend to further utilize the information about
+particular phoneme boundaries, you can delete the lab/ subdirectory afterwards.
+
+* Generating the LPC parameters
+
+It was done using the tools/make_lpc script taken from Festvox.  Because of the
+higher sampling frequency of the recording the -lpc_order parameter value was
+increased to 46, in accordance with the recommendation from the Festvox
+documentation.
+
+* Language definition file
+
+New definition file festvox/czech_ph.scm was created so that the new voice
+could be used with festival-czech.
+
+With the help of the tools/phonelen.scm script the list of the lengths of the
+particular phonemes was generated from the contents of the lab/* files.
+Because the voice_czech_ph voice is the only free Czech Festival voice to date,
+the lengths were put directly into czech.scm.  Other Czech voices can define
+their own phoneme lengths in their definition files if needed.  There is a
+configuration variable named *length-factor* at the beginning of the
+tools/phonelen.scm script defining the coeficient to multiply the resulting
+phoneme lengths with (e.g. when the speaker tried to pronounce carefully and
+spoke the words too slowly because of it).
+
+* Testing and correcting the database
+
+To improve the resulting voice quality it's possible to change the following
+parameters:
+
+- Diphone boundaries.
+
+- Pitchmarks.
+
+- Selection of a particular diphone sample from multiple occurences of the same
+  diphone in the recorded database.
+
+- Changing sample intensities (file etc/powfacts).
+
+- Intonation rules in festival-czech.
+
+- Voice pitch and its variability in the czech-int-simple-params* variable.
+
+It may be useful to set the value of the czech-randomize variable to nil during
+the testing process.
+
+** Changing the intensities
+
+The file etc/powfacts was generated automatically.  When it is necessary to
+correct the intensity of a particular sample, instead of editing the
+etc/powfacts file the new intensity is put into the etc/pf/FILE file, where
+FILE is the base name of the corresponding *.wav file without the extension.
+FILE contains a single numeric value.
+
+* References
+
+voice-czech-ph: http://cvs.freebsoft.org/repository/voice-czech-ph
+festival_czech: http://www.freebsoft.org/festival-czech
+fvoxedit: http://cvs.freebsoft.org/repository/fvoxedit
+
+
+Local Variables:
+mode: outline
+End:
