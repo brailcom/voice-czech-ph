@@ -1,6 +1,6 @@
 EST_File index
 DataType ascii
-NumEntries 2374
+NumEntries 2375
 EST_Header_End
 #-# ph0000 0.0 0.1 0.2
 e-e ph0001 0.546 0.606 0.655
@@ -2369,6 +2369,7 @@ s-ch* &s-ch
 s~-ch* &s~-ch
 t-ch* &t-ch
 t~-ch* &t~-ch
+e:-_ &e-_
 b-a ph0386 0.337 0.392 0.442
 t-a ph0041 0.526 0.594 0.642
 a-t ph0660 0.519 0.569 0.625
