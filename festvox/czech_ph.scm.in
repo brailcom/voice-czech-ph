@@ -1,6 +1,6 @@
 (require 'czech-unisyn)
 
-(defvar czech-ph-unisyn-index "DESTDIR/dic/phdiph.est")
+(defvar czech-ph-unisyn-index "DESTDIR/group/ph.group")
 
 (defvar czech-ph-int-params '((f0_mean 136) (f0_std 8)))
 

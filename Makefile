@@ -6,13 +6,13 @@ festival_voices_path = /usr/share/festival/voices
 
 destdir = $(festival_voices_path)/czech/czech_ph
 
-.PHONY: default install lpc-files viewcvs-bug
+.PHONY: install all-files lpc-files viewcvs-bug
 
-default: lpc-files festvox/czech_ph.scm
+all-files: festvox/czech_ph.scm lpc-files group/ph.group
 
 lpc-files: $(patsubst wav/%.wav, lpc/%.lpc, $(wildcard wav/*.wav))
 viewcvs-bug:
-	mkdir -p lpc
+	mkdir -p lpc group
 lpc/ph0000.lpc: wav/ph0000.wav pm/ph0000.pm viewcvs-bug
 	./tools/make_lpc $<
 lpc/%.lpc: wav/%.wav pm/%.pm etc/powfacts etc/pf/% viewcvs-bug
@@ -35,12 +35,12 @@ etc/powfacts: $(wildcard lab/*.lab)
 festvox/czech_ph.scm: festvox/czech_ph.scm.in
 	sed 's/DESTDIR/$(subst /,\/,$(destdir))/' $< > $@
 
-install: default
+group/ph.group: lpc-files
+	festival -b make-group.scm
+
+install: $(all-files)
 	install -d $(destdir)
 	install -d $(destdir)/festvox
 	install -m 644 festvox/czech_ph.scm $(destdir)/festvox/
-	install -d $(destdir)/dic
-	install -m 644 dic/phdiph.est $(destdir)/dic/
-	install -d $(destdir)/lpc
-	install -m 644 lpc/*.lpc $(destdir)/lpc/
-	install -m 644 lpc/*.res $(destdir)/lpc/
+	install -d $(destdir)/group
+	install -m 644 group/ph.group $(destdir)/group/
