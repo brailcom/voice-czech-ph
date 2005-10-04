@@ -67,18 +67,20 @@ uninstall:
 dist: clean dist-src dist-bin
 
 dist-src:
+	rm -rf $(package)-$(version) $(package)-$(version).tar $(package)-$(version).tar.gz
 	mkdir $(package)-$(version)
 	cp -a COPYING INSTALL Makefile README* *.scm dic doc etc festvox lab pm tools wav $(package)-$(version)/
 	mkdir $(package)-$(version)/group
 	mkdir $(package)-$(version)/lpc
-	for d in `find $(package)-$(version) -name CVS -o -name .arch-ids -print`; do rm -r $$d; done
+	for d in `find $(package)-$(version) -name CVS -o -name .arch-ids`; do rm -r $$d; done
 	tar cf $(package)-$(version).tar $(package)-$(version)
 	gzip -9 $(package)-$(version).tar
 
 dist-bin: all
+	rm -rf $(package)-bin-$(version) $(package)-bin-$(version).tar $(package)-bin-$(version).tar.gz
 	mkdir $(package)-bin-$(version)
 	cp -a COPYING INSTALL README* festvox group $(package)-bin-$(version)/
 	sed '/festival -b make-group.scm/d' Makefile > $(package)-bin-$(version)/Makefile
-	for d in `find $(package)-bin-$(version) -name CVS -o -name .arch-ids -print`; do rm -r $$d; done
+	for d in `find $(package)-bin-$(version) -name CVS -o -name .arch-ids`; do rm -r $$d; done
 	tar cf $(package)-bin-$(version).tar $(package)-bin-$(version)
 	gzip -9 $(package)-bin-$(version).tar
