@@ -19,4 +19,7 @@ Evropská komise (v rámci programu Leonardo da Vinci).
 Odbornou pomoc poskytl Fonetický ústav Filozofické fakulty Univerzity Karlovy
 v čele s prof. PhDr. Zdenou Palkovou, CSc.
 
--- Milan Zamazal <pdm@freebsoft.org>
+S otázkami, připomínkami, apod. se lze obracet na adresu
+festival-czech@lists.freebsoft.org.
+
+-- Milan Zamazal
