@@ -14,8 +14,9 @@ Domovská WWW stránka projektu je
 http://www.freebsoft.org/festival-czech-diphone-database .
 
 Projekt české festivalové syntézy je realizován společností Brailcom, o.p.s.
-Finančně na něj přispěl Nadační fond Českého rozhlasu.  Odbornou pomoc poskytl
-Fonetický ústav Filozofické fakulty Univerzity Karlovy v čele
-s prof. PhDr. Zdenou Palkovou, CSc.
+Finančně na něj přispěly Nadační fond Českého rozhlasu, společnost Seznam.cz a
+Evropská komise (v rámci programu Leonardo da Vinci).
+Odbornou pomoc poskytl Fonetický ústav Filozofické fakulty Univerzity Karlovy
+v čele s prof. PhDr. Zdenou Palkovou, CSc.
 
 -- Milan Zamazal <pdm@freebsoft.org>
