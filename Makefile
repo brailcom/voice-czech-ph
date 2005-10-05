@@ -46,6 +46,7 @@ clean:
 	rm -rf $(package)-bin-$(version) $(package)-bin-$(version).tar
 	rm -f $(package)-$(version).tar.gz $(package)-bin-$(version).tar.gz
 	rm -f festvox/czech_ph.scm
+	rm -f etc/all_vpower etc/mean_vpow etc/powfacts
 
 distclean: clean
 	rm -f lpc/* group/*
