@@ -32,6 +32,13 @@ Run `make install'.  You may want to look at the beginning of Makefile
 (variable `festival_voices_path') to adjust the installation path before
 running the command.
 
+If you don't have installed the standard English Festival voice or if you want
+to set this Czech voice as the default Festival voice, add the following line
+to one of the Festival initialization files (usually /etc/festival.scm for
+system wide settings or ~/.festivalrc for user specific settings):
+
+  (set! voice_default 'voice_czech_ph)
+
 * Running the voice
 
 Start Festival and call:
