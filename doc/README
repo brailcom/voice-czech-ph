@@ -47,13 +47,13 @@ The resulting .wav files are placed in the wav/ directory.
 
 * Checking the diphones
 
-It was checked that the recording contains (after deleting unusable parts)
-contains all the diphones from the list doc/recording/diphones and that it
-doesn't contain any other diphones (due to errors during the correction work).
+It was checked that the recording contains (after deleting unusable parts) all
+the diphones from the list doc/recording/diphones and that it doesn't contain
+any other diphones (due to errors during the correction work).
 
 It was found that because of errors in the doc/recording/words file the
-diphones n-f, n-g and n-k are not present in the recording.  They were later
-added to the file dic/phdiph.est as aliases, together with aliases of the
+diphones n-f, n-g and n-k were not present in the recording.  They have been
+later added to the file dic/phdiph.est as aliases, together with aliases of the
 diphones composed of long vowels, see the etc/phaliases file.
 
 The diphone #-# was created, in the file recording/ph0000.wav:
